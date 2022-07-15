@@ -62,22 +62,22 @@ app.get("/contact/:userID", (req, res) => {
   });
 });
 
-app.get("/product/:id", (req, res) => {
-  console.log(req.query.category);
-  res.send(
-    `product id: ${req.params.id} <br /> category id: ${req.query.category} `
-  );
-});
+// app.get("/product/:id", (req, res) => {
+//   console.log(req.query.category);
+//   res.send(
+//     `product id: ${req.params.id} <br /> category id: ${req.query.category} `
+//   );
+// });
 
 // app.get("/product/:id", (req, res) => {
 //   res.send(`product id: ${req.params.id}`);
 // });
 
-app.get("/product/:id/category/:idcat", (req, res) => {
-  res.send(
-    `product id: ${req.params.id} <br /> category id: ${req.params.idcat} `
-  );
-});
+// app.get("/product/:id/category/:idcat", (req, res) => {
+//   res.send(
+//     `product id: ${req.params.id} <br /> category id: ${req.params.idcat} `
+//   );
+// });
 
 app.use("/", (req, res) => {
   res.status(404).render("notFound");
