@@ -1,5 +1,6 @@
 const express = require("express");
 var morgan = require("morgan");
+const path = require("path");
 
 var expressLayouts = require("express-ejs-layouts");
 const { getContact } = require("./function/contactHandler");
@@ -12,7 +13,9 @@ app.set("layout extractStyles", true);
 
 app.use(expressLayouts);
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use("/public", express.static("public"));
+
 // app.use(morgan("dev"));
 
 app.use((req, res, next) => {
@@ -52,7 +55,7 @@ app.get("/contact/:userID", (req, res) => {
   console.log(user);
 
   if (!user) {
-    res.status(404).render("notFound");
+    res.status(404).render("errorPage");
   }
 
   res.render("detail", {
@@ -80,7 +83,7 @@ app.get("/contact/:userID", (req, res) => {
 // });
 
 app.use("/", (req, res) => {
-  res.status(404).render("notFound");
+  res.status(404).render("errorPage");
 });
 
 app.listen(port, () => {
